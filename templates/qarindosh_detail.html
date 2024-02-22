@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuqoro List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+    }
+
+    /* Container styling */
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Fuqoro List styling */
+    .fuqoro-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    /* Fuqoro item styling */
+    .fuqoro-item {
+        background-color: dodgerblue;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .fuqoro-item h2 {
+        margin-top: 0;
+    }
+
+    .fuqoro-item img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fuqoro List</h1>
+        <div class="fuqoro-list">
+            {% for fuqoro in temp %}
+            <div class="fuqoro-item">
+                <h2>Ismi: {{ fuqoro.Ismi }}</h2>
+                <p>Familyasi: {{ fuqoro.Familyasi }}</p>
+                <p>Sharfi: {{ fuqoro.Sharfi }}</p>
+                <img src="{{ fuqoro.Rasmi.url }}" alt="{{ fuqoro.Ismi }}'s image">
+                <!-- Agar Hudud bilan bog'liq ma'lumot kerak bo'lsa, uni ham chiqaring -->
+                <p>Hudud: {{ fuqoro.hudud }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

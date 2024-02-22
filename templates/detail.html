@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./gayrat.css">
+</head>
+
+
+<body class="body">
+    <div class="left" style="background-color: dodgerblue; border-radius: 9px;">
+        <img src="{{fuqoro.Rasmi.url}}" alt="image" style="border-radius: 9px 9px 0 0 ;">
+        <p>{{fuqoro.Ismi}} </br> {{fuqoro.Familyasi}} <br> {{fuqoro.Sharfi}}</p>
+    </div>
+    <div class="right">
+        <div class="right-1">
+            <p>Qarindoshlar</p>
+        {% for qarindosh in qarindoshlar %}
+            <ul>
+                <li>
+                    <img src="{{qarindosh.Rasmi.url}}" alt="">
+                    <a href="{% url 'qarindosh_detail' qarindosh.id %}" style="text-decoration: none;"><p>{{ qarindosh.Ismi }} {{ qarindosh.Familyasi }} - {{ qarindosh.Sharfi }}</p></a>
+                </li>
+            </ul>
+        {% endfor %}
+        </div>
+        <div class="right-2">
+            <p>Muqaddam sudlanganlar</p>
+            {% for jinoyatchi in jinoyatchilar %}
+            <ul>
+                <li>
+                    <img src="{{jinoyatchi.Rasmi.url}}" alt="">
+                    <a href="{% url 'jinoyatchi' jinoyatchi.id %}" style="text-decoration: none;"><p>{{ jinoyatchi.Ismi }} {{ jinoyatchi.Familyasi }} - {{ jinoyatchi.Sharfi }}</p>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    .body {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.body .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body .left img {
+    width: 300px;
+}
+
+.body .right {
+    display: flex;
+    gap: 40px;
+}
+
+.right-1 li{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: dodgerblue;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.right-1 li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+
+.right-2 li{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: dodgerblue;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.right-2 li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+</style>

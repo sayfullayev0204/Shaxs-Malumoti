@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .a {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: dodgerblue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: dodgerblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="{% url 'search_fuqoro' %}" method="GET">
+            <input class="a" type="text" name="q" placeholder="Fuqoro Ismini kiriting">
+            <button class="button" type="submit">Izlash</button>
+        </form>
+        <form method="post" action="{% url 'check_time' %}">
+            {% csrf_token %}
+            <label for="vaqti">Shu vaqtda hududni tark etganlar</label><br>
+            <input class="a" type="datetime-local" id="vaqti" name="vaqti" required><br>
+            <input class="button" type="submit" value="Submit">
+        </form>
+        <ul>
+            {% for fuqoro in fuqorolar %}
+            <li>
+                <a href="{% url 'detail' fuqoro_id=fuqoro.id %}">{{ fuqoro.Ismi }} {{ fuqoro.Familyasi }} - {{ fuqoro.Sharfi }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+body ul li {
+    width: 210px;
+    height: 210px;
+    background-color: dodgerblue;
+    list-style: none;
+    padding: 20px;
+}
+
+body ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
